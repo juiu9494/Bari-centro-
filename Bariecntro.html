@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolce Forno - Pasticceria Italiana d'Eccellenza</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --secondary-color: #8b0000;
+            --accent-color: #f5f5dc;
+            --dark-color: #3c2f2f;
+            --light-color: #fff8e7;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: var(--secondary-color);
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 2rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        .header-cta {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .header-cta:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Sections générales */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        /* Spécialités */
+        .specialties {
+            background-color: white;
+        }
+        
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .specialty-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .specialty-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .specialty-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .specialty-card:hover .specialty-img img {
+            transform: scale(1.1);
+        }
+        
+        .specialty-content {
+            padding: 1.5rem;
+        }
+        
+        .specialty-content h3 {
+            color: var(--secondary-color);
+        }
+        
+        .price {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        
+        /* À propos */
+        .about {
+            background-color: var(--accent-color);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Témoignages */
+        .testimonials {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .testimonial-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .customer {
+            font-weight: 600;
+            margin-top: 1rem;
+            color: var(--primary-color);
+        }
+        
+        /* Contact */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            width: 30px;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logobari.png" width="200px">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#specialties">I Nostri Prodotti</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#testimonials">Recensioni</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="header-cta">Ordina</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Autenticità Italiana a Tavola</h2>
+            <p>Scopri il gusto inconfondibile di pizze, pani e pasticceria artigianali preparati secondo le tradizioni secolari italiane.</p>
+            <div class="hero-buttons">
+                <a href="#specialties" class="btn btn-primary">Scopri</a>
+                <a href="#contact" class="btn btn-secondary">Ordina</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section class="specialties" id="specialties">
+        <div class="container">
+            <div class="section-title">
+                <h2>Le Nostre Specialità</h2>
+                <p>Prodotti artigianali realizzati con passione</p>
+            </div>
+            <div class="specialty-grid">
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pizza Italiana">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Pizza Margherita</h3>
+                        <p>Il classico italiano con salsa di pomodoro, mozzarella di bufala e basilico fresco</p>
+                        <p class="price">14,90 €</p>
+                    </div>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pane Italiano">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Focaccia Genovese</h3>
+                        <p>Pane italiano soffice con olio extravergine d'oliva e rosmarino</p>
+                        <p class="price">7,50 €</p>
+                    </div>
+                </div>
+                <div class="specialty-card">
+                    <div class="specialty-img">
+                        <img src="https://www.weekendpremium.it/wp/wp-content/uploads/2020/03/solci-misti9-800x445.jpg" alt="Pasticceria Italiana">
+                    </div>
+                    <div class="specialty-content">
+                        <h3>Tiramisù Tradizionale</h3>
+                        <p>Il dessert italiano emblematico con mascarpone e caffè</p>
+                        <p class="price">6,90 €</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>La Nostra Storia</h2>
+                <p>Una passione che attraversa le generazioni</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="logobari.png" alt="Interno della pasticceria">
+                </div>
+                <div class="about-text">
+                    <h3>Focacceria moderna, con un’anima profondamente radicata nella tradizione.</h3>
+                    <p>Con Bari Centro, Franco porta nelle Marche il meglio dell’arte bianca pugliese: un’eredità di famiglia tramandata da oltre quattro generazioni.</p>
+                    <p>Dalla sua amata Puglia, unisce passione, esperienza e innovazione per dare vita a una focacceria contemporanea che non dimentica le proprie radici.</p>
+                    <p>. Ogni focaccia è un viaggio nei sapori autentici del Sud, dove tradizione e creatività si incontrano ogni giorno.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cosa Dicono i Nostri Clienti</h2>
+                <p>La soddisfazione dei nostri clienti è il nostro orgoglio più grande</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>La migliore pizza in città! L'impasto è leggero e arioso, la salsa di pomodoro è perfettamente equilibrata. Un vero gusto d'Italia!</p>
+                    <p class="customer">- Maria Rossi</p>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>La focaccia è semplicemente eccezionale. Si sente il savoir-faire artigianale e la qualità degli ingredienti.</p>
+                    <p class="customer">- Tommaso Bianchi</p>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Il tiramisù mi ricorda il mio soggiorno in Toscana. Textura perfetta e il giusto quantitativo di caffè. Una delizia!</p>
+                    <p class="customer">- Sofia Verdi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contattaci</h2>
+                <p>Siamo a tua disposizione</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Indirizzo</h4>
+                            <p>VIA NINO BIXIO 69 - 60015 Falconara Marittima (AN)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefono</h4>
+                            <p>+39 071 911318</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Orari</h4>
+                            <p>Lun-Sab: 7:00-20:00</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome completo</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Messaggio</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Invia</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Bari centro </h3>
+                    <p>L'arte autentica della pasticceria e panificazione italiana dal 1985.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/baricentrofalconara/"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Rapidi</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#specialties">I Nostri Prodotti</a></li>
+                        <li><a href="#about">Chi Siamo</a></li>
+                        <li><a href="#testimonials">Recensioni</a></li>
+                        <li><a href="#contact">Contatti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Prodotti</h3>
+                    <ul>
+                        <li><a href="#">Pizze Tradizionali</a></li>
+                        <li><a href="#">Pani Italiani</a></li>
+                        <li><a href="#">Pasticceria</a></li>
+                        <li><a href="#">Bevande Italiane</a></li>
+                        <li><a href="#">Prodotti Freschi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Iscriviti per ricevere le nostre novità e offerte speciali</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="email" placeholder="La tua email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iscriviti</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 BariCentro di Francesco Altomonte - Tutti i diritti riservati</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Simple form validation
+        const contactForm = document.querySelector('.contact-form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                if(name && email && message) {
+                    alert('Grazie per il tuo messaggio! Ti risponderemo al più presto.');
+                    contactForm.reset();
+                } else {
+                    alert('Per favore, compila tutti i campi del modulo.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
